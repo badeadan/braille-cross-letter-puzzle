@@ -22,14 +22,18 @@ Puzzle:
 
 ## TODO
 
-- investigate how to generate letters
+### investigate how to generate letters (in progress)
 
 Use [OpenSCAD grade2 braille font module](http://www.thingiverse.com/thing:74358). It looks like this:   ![](doc/jaqtikkun-braille-module.png).
 
 See [3rd-party/uploads-61-31-b9-e3-34-braille.scad](3rd-party/uploads-61-31-b9-e3-34-braille.scad)
 
-- parametric letter block
+Modified braille.scad file to generate rows of letters. See [braille-letter.scad](braille-letter.scad)
 
-- parametric puzzle-base
+![](doc/braille-alphabet.png)
+
+### parametric letter block
+
+### parametric puzzle-base
 
 
