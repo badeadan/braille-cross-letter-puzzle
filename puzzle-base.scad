@@ -1,5 +1,6 @@
+
 module connector(s, h) {
-	linear_extrude(height=h, center=true)  {
+	linear_extrude(height=h)  {
 		difference() {
 			hull() {
 				circle(d=s/2, $fn=20);
@@ -12,37 +13,81 @@ module connector(s, h) {
 	}
 }
 
-module puzzle_base() {
+module corner_slope(l, h) {
+	cube([l, h, h/2]); 
+	cube([l, h/2, h]); 
+
+	translate([0,l,0]) 
+		rotate([0, 0, -90]) {
+			cube([l, h, h/2]); 
+			cube([l, h/2, h]); 
+		}
+}
+
+module corner(l, h) {
+	cube([l, h, h]); 
+
+	translate([0,l,0]) 
+		rotate([0, 0, -90]) {
+			cube([l, h, h]); 
+		}
+}
+
+module puzzle_base(l, w, h, c) {
+
+	c_offset = (l-c*1.8)/2;
+	c_width = (w - c)/2;
+
 	difference() {
 
 		union() {
-			difference() {
-				translate([-5,-5,-0.5])
-					cube([10,15,2], center=false);
-				translate([-4,-4,+0.5])
-					cube([8,13,2], center=false);
-				translate([-5,-2,+0.5])
-					cube([10,9,2], center=false);
-				translate([-2,-5,+0.5])
-					cube([4,15,2], center=false);
-			}
+			cube([l, w, h], center=false);
 
-			translate([4.99,0,0])
-				connector(5,1);
+			translate([0.01, w/2, 0])
+				rotate([0, 0, 180])
+				connector(c, h);
 
-			translate([0,-4.99,0])
-				rotate([0,0,-90])
-				connector(5,1);
+			translate([c/2+c_offset, 0.01, 0])
+				rotate([0, 0, -90])
+				 connector(c, h);
+
+			translate([0, 0, h])
+				corner(c_width, h);
+
+			translate([l, 0, h])
+				rotate([0, 0, 90])
+				corner(c_width, h);
+
+			translate([l, w, h])
+				rotate([0, 0, 180])
+				corner(c_width, h);
+
+			translate([0, w, h])
+				rotate([0, 0, -90])
+				corner(c_width, h);
 		}
 
-		translate([0,10.01,0])
-			rotate([0,0,-90])
-			connector(5,1);
+		translate([c/2+c_offset, w+0.01, 0])
+			rotate([0, 0, -90])
+		    connector(c, h);
 
-		translate([-5.01,0,0])
-			connector(5,1);
+		translate([l+0.01, w/2, 0])
+			rotate([0, 0, 180])
+			connector(c, h);
 	}
 }
 
-puzzle_base();
+spacing = 2.5;
+distance = 3.75 + spacing;     
+plate_height = 10;
+plate_thickness = 2;
 
+puzzle_base(
+	plate_height + 2*plate_thickness,
+	distance + 2*plate_thickness,
+	plate_thickness,
+	(distance + 2*plate_thickness)/2.3);
+
+use <braille-letter.scad>
+translate([plate_thickness, plate_thickness, plate_thickness])
+	* braille_letter("A");
