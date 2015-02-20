@@ -44,4 +44,13 @@ Imported Braille letter fits perfectly.
 
   ![](doc/puzzle-base-param-fit.png)
 
+Created a test for puzzle-base and braille-letter:
+
+  ![](doc/puzzle-test.png)
+
+Aborted print due to a filament problem. Partial results:
+
+  ![](doc/2015-02-21_003334.png)
+
+Puzzle connectors need to be adjusted as they don't fit easily.
 
