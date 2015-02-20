@@ -34,6 +34,14 @@ Modified braille.scad file to generate rows of letters. See [braille-letter.scad
 
 ### parametric letter block
 
-### parametric puzzle-base
+### parametric puzzle-base (in progress)
+
+Switched puzzle\_base from using absolute value to parameters.
+
+  ![](doc/puzzle-base-param.png)
+
+Imported Braille letter fits perfectly.
+
+  ![](doc/puzzle-base-param-fit.png)
 
 
