@@ -52,5 +52,6 @@ Aborted print due to a filament problem. Partial results:
 
   ![](doc/2015-02-21_003334.png)
 
-Puzzle connectors need to be adjusted as they don't fit easily.
+Puzzle connectors need to be adjusted as they don't fit easily:
 
+  ![](doc/puzzle-base-interlock.png)

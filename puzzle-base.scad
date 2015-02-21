@@ -37,6 +37,7 @@ module puzzle_base(l, w, h, c) {
 
 	c_offset = (l-c*1.8)/2;
 	c_width = (w - c)/2;
+	c_scale = (c+0.3)/c;
 
 	difference() {
 
@@ -49,7 +50,7 @@ module puzzle_base(l, w, h, c) {
 
 			translate([c/2+c_offset, 0.01, 0])
 				rotate([0, 0, -90])
-				 connector(c, h);
+				connector(c, h);
 
 			translate([0, 0, h])
 				corner(c_width, h);
@@ -69,10 +70,12 @@ module puzzle_base(l, w, h, c) {
 
 		translate([c/2+c_offset, w+0.01, 0])
 			rotate([0, 0, -90])
+			scale([c_scale, c_scale, 1])
 		    connector(c, h);
 
 		translate([l+0.01, w/2, 0])
 			rotate([0, 0, 180])
+			scale([c_scale, c_scale, 1])
 			connector(c, h);
 	}
 }
@@ -83,6 +86,13 @@ plate_height = 10;
 plate_thickness = 2;
 
 puzzle_base(
+	plate_height + 2*plate_thickness,
+	distance + 2*plate_thickness,
+	plate_thickness,
+	(distance + 2*plate_thickness)/2.3);
+
+translate([plate_height+2*plate_thickness+0.1, 0, 0])
+# puzzle_base(
 	plate_height + 2*plate_thickness,
 	distance + 2*plate_thickness,
 	plate_thickness,
