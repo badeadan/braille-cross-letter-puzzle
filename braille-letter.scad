@@ -489,10 +489,10 @@ module braille_letter(char) {
 	}
 }
 
-module braille_str(chars) {
+module braille_str(chars, extra_space) {
 	union() {
 		for (count = [0:len(chars)-1]) {
-			translate(v = [0, count * (distance+spacing), plate_thickness]) {
+			translate(v = [0, count * (distance+spacing+extra_space), plate_thickness]) {
 				braille_letter(chars[count]);
 			}
 		}
