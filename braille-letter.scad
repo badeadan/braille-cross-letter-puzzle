@@ -1,12 +1,11 @@
-// mm sizes from http://dots.physics.orst.edu/gs_layout.html
-radius = 0.25;
+radius = 0.8;
 spacing = 2.5;
-distance = 3.75 + spacing;
+distance = 5 + spacing;
 
-plate_height = 10;
-plate_thickness = 2;
+plate_height = 14;
+plate_thickness = 5;
 
-$fn = 10;
+$fn = 20;
 
 module letter(bitmap) {
 	row_size = 2;
@@ -19,8 +18,9 @@ module letter(bitmap) {
 	for (loc = [0:bitmap_size - 1]) {
 		if (bitmap[loc] != 0) {
 			union() {
+				echo(loc_y(loc));
 				translate(v = [loc_x(loc), loc_y(loc), 0]) {
-					sphere(radius = radius* bitmap[loc], center = true);
+					sphere(radius* bitmap[loc], center = true);
 				}
 			}
 		}
