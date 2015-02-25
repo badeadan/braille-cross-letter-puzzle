@@ -34,9 +34,7 @@ Puzzle connectors need to be adjusted as they don't fit easily:
 
   ![](doc/puzzle-base-interlock.png)
 
-### TODO change letter size
-
-
+### DONE change letter size
 
 ### TODO use better connectors
 
