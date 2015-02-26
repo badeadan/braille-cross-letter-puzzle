@@ -21,3 +21,6 @@ Puzzle:
   ![](doc/puzzle-letter-block.png)
 
 
+Updated puzzle inter-lock:
+
+![](doc/puzzle-base-better-interlock.png)

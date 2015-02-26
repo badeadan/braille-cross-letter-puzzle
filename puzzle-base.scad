@@ -1,17 +1,4 @@
-
-module connector(s, h) {
-	linear_extrude(height=h)  {
-		difference() {
-			hull() {
-				circle(d=s/2, $fn=20);
-				translate([s/2,0,0])
-					circle(d=s, $fn=20);
-			};
-			translate([-s/2,0,0])
-				square(size=[s,s], center=true);
-		}
-	}
-}
+use <puzzle-connector.scad>
 
 module corner_slope(l, h) {
 	cube([l, h, h/2]); 
@@ -46,37 +33,28 @@ module puzzle_base(l, w, h, c) {
 
 			translate([0.01, w/2, 0])
 				rotate([0, 0, 180])
-				connector(c, h);
+				puzzle_connector_pear(c, h, 0, [h/2, h/2]);
 
 			translate([c/2+c_offset, 0.01, 0])
 				rotate([0, 0, -90])
-				connector(c, h);
+				puzzle_connector_pear(c, h, 0, [h/2, h/2]);
 
-			translate([0, 0, h])
-				corner(c_width, h);
-
-			translate([l, 0, h])
-				rotate([0, 0, 90])
-				corner(c_width, h);
-
-			translate([l, w, h])
-				rotate([0, 0, 180])
-				corner(c_width, h);
-
-			translate([0, w, h])
-				rotate([0, 0, -90])
-				corner(c_width, h);
+			translate([0, 0, h]) {
+				difference() {
+					cube([l, w, h/2], center=false);
+					translate([h/2, h/2, 0])
+						cube([l-h, w-h, h], center=false);
+				}
+			}
 		}
 
-		translate([c/2+c_offset, w+0.01, 0])
+		translate([c/2+c_offset, w+0.2, 0])
 			rotate([0, 0, -90])
-			scale([c_scale, c_scale, 1])
-		    connector(c, h);
+		    puzzle_connector_pear(c, h*2, -0.2);
 
-		translate([l+0.01, w/2, 0])
+		translate([l+0.2, w/2, 0])
 			rotate([0, 0, 180])
-			scale([c_scale, c_scale, 1])
-			connector(c, h);
+			puzzle_connector_pear(c, h*2, -0.2);
 	}
 }
 
@@ -85,19 +63,34 @@ distance = 3.75 + spacing;
 plate_height = 10;
 plate_thickness = 2;
 
+translate([0, 0, 0])
 puzzle_base(
 	plate_height + 2*plate_thickness,
 	distance + 2*plate_thickness,
 	plate_thickness,
 	(distance + 2*plate_thickness)/2.3);
 
-translate([plate_height+2*plate_thickness+0.1, 0, 0])
-# puzzle_base(
+translate([plate_height+2*plate_thickness+0.2, 0, 0])
+puzzle_base(
+	plate_height + 2*plate_thickness,
+	distance + 2*plate_thickness,
+    plate_thickness,
+	(distance + 2*plate_thickness)/2.3);
+
+translate([0, distance + 2*plate_thickness+0.2, 0])
+puzzle_base(
 	plate_height + 2*plate_thickness,
 	distance + 2*plate_thickness,
 	plate_thickness,
 	(distance + 2*plate_thickness)/2.3);
 
-use <braille-letter.scad>
-translate([plate_thickness, plate_thickness, plate_thickness])
-	* braille_letter("A");
+translate([plate_height+2*plate_thickness+0.2, distance + 2*plate_thickness+0.2, 0])
+puzzle_base(
+	plate_height + 2*plate_thickness,
+	distance + 2*plate_thickness,
+    plate_thickness,
+	(distance + 2*plate_thickness)/2.3);
+
+//use <braille-letter.scad>
+//translate([plate_thickness, plate_thickness, plate_thickness])
+//	* braille_letter("A");
