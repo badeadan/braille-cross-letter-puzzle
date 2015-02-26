@@ -1,39 +1,62 @@
 use <offset.scad>
 
-$fn=20;
-
-module connector_pear(s, h, inset=0) {
-	linear_extrude(height=h)  {
+module puzzle_connector_pear(diameter, height, inset=0, skirt=[0, 0]) {
+	module connector(diameter, height, inset) {
+		linear_extrude(height=height)  {
+			difference() {
+				hull() {
+					circle(d=diameter/2-inset*2, $fn=20);
+					translate([diameter/2,0,0])
+						circle(d=diameter-inset*2, $fn=20);
+				};
+				translate([-diameter/2,0,0])
+					square(size=[diameter,diameter], center=true);
+			}
+		}
+	}
+	if ((skirt[0] > 0) && (skirt[1] > 0)) {
 		difference() {
-			hull() {
-				circle(d=s/2-inset*2, $fn=20);
-				translate([s/2,0,0])
-					circle(d=s-inset*2, $fn=20);
-			};
-			translate([-s/2,0,0])
-				square(size=[s,s], center=true);
+			translate([0, 0, height])
+				connector(diameter, skirt[0], inset);
+			translate([skirt[1], -(diameter-inset*2)/2, height])
+				cube([diameter-inset*2, diameter-inset*2, skirt[0]]);
 		}
 	}
+	connector(diameter, height, inset);
 }
 
-module connector_round(d, b, h, inset=0) {
-	translate([0, -b/2, 0])
-	union() {
-		linear_extrude(height=h) {
-			translate([(d+b/4)/2, b/2, 0])
-				circle(d = d-inset*2);
-			translate([0, inset, 0])
-				square([b,b-inset*2]);
+module puzzle_connector_round(diameter, base, height, inset=0, skirt=[0, 0]) {
+	module connector(diameter, base, height, inset) {
+		translate([0, -base/2, 0])
+			union() {
+				linear_extrude(height=height) {
+					translate([(diameter + base/4)/2, base/2, 0])
+						circle(d = diameter-inset*2, $fn=20);
+					translate([0, inset, 0])
+						square([base, base - inset*2]);
+				}
+			}
+	}
+	if ((skirt[0] > 0) && (skirt[1] > 0)) {
+		difference() {
+			translate([0, 0, height])
+				connector(diameter, base, skirt[0], inset);
+			translate([skirt[1], -(diameter-inset*2)/2, height])
+				cube([diameter-inset*2, diameter-inset*2, skirt[0]]);
 		}
 	}
+	connector(diameter, base, height, inset);
 }
 
-connector_round(5, 2.5, 2, -0.3);
-# connector_round(5, 2.5, 2);
+difference() {
+	puzzle_connector_round(5, 2.5, 2, -0.3, [1, 1]);
+	puzzle_connector_round(5, 2.5, 2, 0, [1, 1]);
+}
 
 translate([0, 7, 0]) {
-	connector_pear(5, 2, -0.3);
-    # connector_pear(5, 2);
+	difference() {
+		puzzle_connector_pear(5, 2, -0.3, [1, 1]);
+		puzzle_connector_pear(5, 2, 0, [1, 1]);
+	}
 }
-
 
