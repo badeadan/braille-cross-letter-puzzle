@@ -3,7 +3,7 @@ use <../puzzle-base.scad>
 
 spacing = 2.5;
 distance = 3.75 + spacing;     
-plate_height = 10;
+plate_height = 14;
 plate_thickness = 2;
 
 module base() {
@@ -11,20 +11,20 @@ module base() {
 			plate_height + 2*plate_thickness,
 			distance + 2*plate_thickness,
 			plate_thickness,
-			(distance + 2*plate_thickness)/2.3);
+			(distance + 2*plate_thickness)/2.1);
 };
 
 translate([ 0,  0, 0])
 	base();
-translate([21, 0, 0])
+translate([23, 0, 0])
 	base();
-translate([ 0, 17, 0])
+translate([ 0, 19, 0])
 	base();
-translate([21, 17, 0])
+translate([23, 19, 0])
 	base();
 
 use <braille-letter.scad>
-translate([0, 35, plate_height])
+translate([0, 45, plate_height])
 	rotate([90, 90, 0])
 	braille_str("ABCD");
 

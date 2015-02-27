@@ -33,15 +33,15 @@ module puzzle_base(l, w, h, c) {
 
 			translate([0.01, w/2, 0])
 				rotate([0, 0, 180])
-				puzzle_connector_pear(c, h, 0, [h/2, h/2]);
+				puzzle_connector_pear(c, h, 0, [h, h/2]);
 
 			translate([c/2+c_offset, 0.01, 0])
 				rotate([0, 0, -90])
-				puzzle_connector_pear(c, h, 0, [h/2, h/2]);
+				puzzle_connector_pear(c, h, 0, [h, h/2]);
 
 			translate([0, 0, h]) {
 				difference() {
-					cube([l, w, h/2], center=false);
+					cube([l, w, h], center=false);
 					translate([h/2, h/2, 0])
 						cube([l-h, w-h, h], center=false);
 				}
