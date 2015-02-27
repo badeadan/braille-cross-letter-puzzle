@@ -16,11 +16,11 @@ module base() {
 
 translate([ 0,  0, 0])
 	base();
-translate([23, 0, 0])
+translate([26, 0, 0])
 	base();
 translate([ 0, 19, 0])
 	base();
-translate([23, 19, 0])
+translate([26, 19, 0])
 	base();
 
 use <braille-letter.scad>
