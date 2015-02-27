@@ -18,9 +18,10 @@ module letter(bitmap) {
 	for (loc = [0:bitmap_size - 1]) {
 		if (bitmap[loc] != 0) {
 			union() {
-				echo(loc_y(loc));
-				translate(v = [loc_x(loc), loc_y(loc), 0]) {
-					sphere(radius* bitmap[loc], center = true);
+				translate([loc_x(loc), loc_y(loc), 0]) {
+					translate([0, 0, radius/2])
+					sphere(radius, center = true);
+					cylinder(radius, radius, radius, center = true);
 				}
 			}
 		}

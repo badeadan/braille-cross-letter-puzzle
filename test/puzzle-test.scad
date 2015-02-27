@@ -9,8 +9,8 @@ border = 1;
 
 module base() {
 	puzzle_base(
-			plate_height + 2*border + 0.1,
-			distance + 2*border + 0.1,
+			plate_height + 2*border + 1,
+			distance + 2*border + 0.6,
 			plate_thickness,
 			distance/1.5, 
 			[border, border*3]);
@@ -26,10 +26,10 @@ translate([26, 19, 0])
 	base();
 
 //use <braille-letter.scad>
-//translate([border, border, plate_thickness])
+//translate([border+0.5, border+0.3, plate_thickness])
 //	braille_letter("A");
 
-//translate([0, 45, plate_height])
-//	rotate([90, 90, 0])
-//	braille_str("ABCD");
+translate([43, 30, plate_height])
+	rotate([90, 90, 180])
+	braille_str("ABCD", extra_space=1.7);
 
