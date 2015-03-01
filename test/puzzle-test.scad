@@ -9,8 +9,8 @@ border = 1;
 
 module base() {
 	puzzle_base(
-			plate_height + 2*border + 1,
-			distance + 2*border + 0.6,
+			plate_height + 2*border + 0.6,
+			distance + 2*border + 0.2,
 			plate_thickness,
 			distance/1.5, 
 			[border, border*3]);
@@ -31,5 +31,5 @@ translate([26, 19, 0])
 
 translate([43, 30, plate_height])
 	rotate([90, 90, 180])
-	braille_str("ABCD", extra_space=1.7);
+	braille_str("EFGH", extra_space=1.7);
 
