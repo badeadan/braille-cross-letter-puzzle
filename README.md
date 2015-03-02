@@ -24,3 +24,8 @@ Puzzle:
 Updated puzzle inter-lock:
 
 ![](doc/puzzle-base-better-interlock.png)
+
+3D printing results:
+
+![](doc/20150302233429.jpg)
+

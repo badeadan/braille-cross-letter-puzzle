@@ -31,5 +31,9 @@ translate([26, 19, 0])
 
 translate([43, 30, plate_height])
 	rotate([90, 90, 180])
-	braille_str("EFGH", extra_space=1.7);
+	braille_str("IJKL", extra_space=2);
 
+translate([0, -7, plate_height])
+	rotate([90, 90, 0])
+	braille_str("MNOP", extra_space=2);
+ 
