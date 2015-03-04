@@ -16,24 +16,40 @@ module base() {
 			[border, border*3]);
 };
 
-translate([ 0,  0, 0])
-	base();
-translate([26, 0, 0])
-	base();
-translate([ 0, 19, 0])
-	base();
-translate([26, 19, 0])
-	base();
+module base_block() {
+	translate([ 0,  0, 0])
+		base();
+	translate([26, 0, 0])
+		base();
+	translate([ 0, 19, 0])
+		base();
+	translate([26, 19, 0])
+		base();
+}
 
-//use <braille-letter.scad>
-//translate([border+0.5, border+0.3, plate_thickness])
-//	braille_letter("A");
+translate([0, -38, 0])
+	base_block();
 
-translate([43, 30, plate_height])
-	rotate([90, 90, 180])
-	braille_str("IJKL", extra_space=2);
+translate([52, -38, 0])
+	base_block();
 
-translate([0, -7, plate_height])
-	rotate([90, 90, 0])
-	braille_str("MNOP", extra_space=2);
+translate([0, 0, 0])
+	base_block();
+
+translate([52, 0, 0])
+	base_block();
+
+translate([0, 38, 0])
+	base_block();
+
+translate([52, 38, 0])
+	base_block();
+
+ //translate([43, 30, plate_height])
+//	rotate([90, 90, 180])
+//	braille_str("IJKL", extra_space=2);
+
+//translate([0, -7, plate_height])
+//	rotate([90, 90, 0])
+//	braille_str("MNOP", extra_space=2);
  
