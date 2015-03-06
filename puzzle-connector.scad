@@ -30,10 +30,10 @@ module puzzle_connector_round(diameter, base, height, inset=0, skirt=[0, 0]) {
 		translate([0, -base/2, 0])
 			union() {
 				linear_extrude(height=height) {
-					translate([(diameter + base)/2, base/2, 0])
+					translate([(diameter + base -inset)/2, base/2, 0])
 						circle(d = diameter-inset*2, $fn=20);
-					translate([0, inset, 0])
-						square([base, base - inset*2]);
+					translate([0, inset*2, 0])
+						square([base - inset*2, base - inset*4]);
 				}
 			}
 	}

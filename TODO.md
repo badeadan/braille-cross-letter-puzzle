@@ -36,6 +36,6 @@ Puzzle connectors need to be adjusted as they don't fit easily:
 
 ### DONE change letter size
 
-### TODO use better connectors
+### DONE use better connectors
 
 Based on [Creating cookie cutters using offsets (and minkowski sums) in OpenSCAD to make your honey happy](http://blog.cubehero.com/2013/12/31/creating-cookie-cutters-using-offsets-in-openscad/)
