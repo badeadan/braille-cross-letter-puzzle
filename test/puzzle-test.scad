@@ -7,49 +7,10 @@ plate_height = 14;
 plate_thickness = 2;
 border = 1;
 
-module base() {
-	puzzle_base(
-			plate_height + 2*border + 0.6,
-			distance + 2*border + 0.2,
-			plate_thickness,
-			distance/1.5, 
-			[border, border*3]);
-};
-
-module base_block() {
-	translate([ 0,  0, 0])
-		base();
-	translate([26, 0, 0])
-		base();
-	translate([ 0, 19, 0])
-		base();
-	translate([26, 19, 0])
-		base();
+for (i=[0:4]) {
+	translate([0, i*(distance+spacing), plate_height])
+		rotate([90, 90, 180])
+		braille_str("AAAAA", extra_space=2);
 }
 
-translate([0, -38, 0])
-	base_block();
 
-translate([52, -38, 0])
-	base_block();
-
-translate([0, 0, 0])
-	base_block();
-
-translate([52, 0, 0])
-	base_block();
-
-translate([0, 38, 0])
-	base_block();
-
-translate([52, 38, 0])
-	base_block();
-
- //translate([43, 30, plate_height])
-//	rotate([90, 90, 180])
-//	braille_str("IJKL", extra_space=2);
-
-//translate([0, -7, plate_height])
-//	rotate([90, 90, 0])
-//	braille_str("MNOP", extra_space=2);
- 
