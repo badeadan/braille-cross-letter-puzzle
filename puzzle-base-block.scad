@@ -20,27 +20,15 @@ module base_block() {
 		base();
 	translate([26, 0, 0])
 		base();
-	translate([ 0, 19, 0])
-		base();
-	translate([26, 19, 0])
+	translate([ 52, 0, 0])
 		base();
 }
 
-translate([0, -38, 0])
-	base_block();
-
-translate([52, -38, 0])
+translate([0, -19, 0])
 	base_block();
 
 translate([0, 0, 0])
 	base_block();
 
-translate([52, 0, 0])
+translate([0, 19, 0])
 	base_block();
-
-translate([0, 38, 0])
-	base_block();
-
-translate([52, 38, 0])
-	base_block();
-

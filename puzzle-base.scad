@@ -29,11 +29,11 @@ module puzzle_base(l, w, h, c, b=[0, 0]) {
 
 		translate([c/2+c_offset, w+0.1, 0])
 			rotate([0, 0, -90])
-		    puzzle_connector_round(c, c/2, h+b[1], -0.3);
+		    puzzle_connector_round(c, c/2, h+b[1], -0.2);
 
 		translate([l+0.2, w/2, 0])
 			rotate([0, 0, 180])
-			puzzle_connector_round(c, c/2, h+b[1], -0.3);
+			puzzle_connector_round(c, c/2, h+b[1], -0.2);
 	}
 }
 
