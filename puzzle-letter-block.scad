@@ -7,23 +7,84 @@ plate_height = 14;
 plate_thickness = 2;
 border = 1;
 
-translate([0, 0*(distance+spacing), plate_height])
-	rotate([90, 90, 180])
-	braille_str("EEEEE", extra_space=2);
+letters=[
+	/* batch 0 */
+	"AAAA",
+	"ABBB",
+	"BBCC",
+	"CCCC",
 
-translate([0, 1*(distance+spacing), plate_height])
-	rotate([90, 90, 180])
-	braille_str("IIIII", extra_space=2);
+	/* batch 1 */
+	"CCCC",
+	"DDDD",
+	"EEEE",
+	"EEEE",
 
-translate([0, 2*(distance+spacing), plate_height])
-	rotate([90, 90, 180])
-	braille_str("OOOOO", extra_space=2);
+	/* batch 2 */
+	"EEEE",
+	"EEEF",
+	"FFFG",
+	"GGGH",
 
-translate([0, 3*(distance+spacing), plate_height])
-	rotate([90, 90, 180])
-	braille_str("UUUUU", extra_space=2);
+	/* batch 3 */
+	"IIII",
+	"IIII",
+	"IIII",
+	"IIIJ",
 
-translate([0, 4*(distance+spacing), plate_height])
-	rotate([90, 90, 180])
-	braille_str("XXZZJ", extra_space=2);
-               
+	/* batch 4 */
+	"KLLL",
+	"LLLL",
+	"LLLM",
+	"MMMM",
+
+	/* batch 5 */
+	"NNNN",
+	"NOOO",
+	"OOOO",
+	"OOOP",
+
+	/* batch 6 */
+	"PPPP",
+	"RRRR",
+	"RRRR",
+	"RRSS",
+
+	/* batch 7 */
+	"SSSS",
+	"SSSS",
+	"SSTT",
+	"TTTT",
+
+	/* batch 8 */
+	"TTTT",
+	"UUUU",
+	"UUVV",
+	"XZZZ"
+];
+
+batch=8;
+
+if ((batch*4+0)<len(letters)) {
+	translate([0, 0*(distance+spacing), plate_height])
+		rotate([90, 90, 180])
+		braille_str(letters[batch*4+0], extra_space=2);
+}
+
+if ((batch*4+1)<len(letters)) {
+	translate([0, 1*(distance+spacing), plate_height])
+		rotate([90, 90, 180])
+		braille_str(letters[batch*4+1], extra_space=2);
+}
+
+if ((batch*4+2)<len(letters)) {
+	translate([0, 2*(distance+spacing), plate_height])
+		rotate([90, 90, 180])
+		braille_str(letters[batch*4+2], extra_space=2);
+}
+
+if ((batch*4+3)<len(letters)) {
+	translate([0, 3*(distance+spacing), plate_height])
+		rotate([90, 90, 180])
+		braille_str(letters[batch*4+3], extra_space=2);
+}
