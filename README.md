@@ -29,3 +29,8 @@ Updated puzzle inter-lock:
 
 ![](doc/20150302233429.jpg)
 
+## Results
+
+It looks like this:
+
+![](doc/DSC_0169.jpg)
