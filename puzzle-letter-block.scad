@@ -60,10 +60,16 @@ letters=[
 	"TTTT",
 	"UUUU",
 	"UUVV",
-	"XZZZ"
+	"XZZZ",
+
+	/* extra batch 9 */
+	"RRRR",
+	"RRRR",
+	"RPPP",
+	"SSSS"
 ];
 
-batch=8;
+batch=9;
 
 if ((batch*4+0)<len(letters)) {
 	translate([0, 0*(distance+spacing), plate_height])
