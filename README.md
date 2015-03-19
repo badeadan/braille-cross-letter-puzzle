@@ -33,4 +33,4 @@ Updated puzzle inter-lock:
 
 It looks like this:
 
-![](doc/DSC_0169.jpg)
+![](doc/DSC_0169.JPG)
